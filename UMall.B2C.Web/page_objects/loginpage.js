@@ -1,20 +1,60 @@
-var tesseract = require('node-tesseract')
-var webdriver = require('selenium-webdriver')
+var fs=require('fs');
 
 var loginCommands = {
-  getOCRwithTess: function(filepath) {
+  getOCRwithTess: function(imgPath) {
     //implement here,TODO:圖片優化,tesseract辨識
       const tesseract = require('node-tesseract');
       const gm=require('gm')
-      const image = fs.readFileSync("temp.png").toString("base64");
+      var image = fs.readFileSync(imgPath).toString('base64');
+
+      return processImg(imgPath,imgPath)
+          .then(recognizer)
+          .then(text)
+
+      /**
+         * 圖片二值化去噪
+         * @param imgPath
+         * @param newPath
+         * @param [thresholdVal=150] 默認閥值
+         * @returns {Promise}
+         */-
+        function processImg (imgPath, newPath, thresholdVal) {
+            return new Promise((resolve, reject) => {
+                gm(imgPath)
+                    .threshold(thresholdVal || 150)
+                    .write(newPath, (err)=> {
+                        if (err) return reject(err);
+
+                        resolve(newPath);
+                    });
+            });
+        }
+
+        /**
+         * 識別圖片
+         * @param imgPath
+         * @param options tesseract options
+         * @returns {Promise}
+         */
+        function recognizer (imgPath, options) {
+            options = Object.assign({psm: 7}, options);
+
+            return new Promise((resolve, reject) => {
+                tesseract
+                    .process(imgPath, options, (err, text) => {
+                        if (err) return reject(err);
+                        resolve(text.replace(/[\r\n\s]/gm, ''));
+                    });
+            });
+        }
 
   }
-  saveValidcodeImg: function(){
+  saveValidcodeImg: function(imgPath){
       const image=this.imgValidCode.takeScreenshot();
-      fs.writeFileSync('temp.png',image,'base64');
+      fs.writeFileSync(imgPath,image,'base64');
       return image;
   }
-  getOCRwithbaiduApi: function(filepath){
+  getOCRwithbaiduApi: function(imgPath){
       /*
         帳號：etmall_sdet
         密碼:okmwsx12345E
@@ -35,12 +75,12 @@ var loginCommands = {
             ]
         }
       */
-      const APP_ID = "15428109";
-      const API_KEY = "11L9VfvOweGpVgs8omxorLTK";
-      const SECRET_KEY = "6eNlH8yNuFGC4n7q2kNFgp04hqlrwgnr";
+      const APP_ID = '15428109';
+      const API_KEY = '11L9VfvOweGpVgs8omxorLTK';
+      const SECRET_KEY = '6eNlH8yNuFGC4n7q2kNFgp04hqlrwgnr';
       // 新建一個baidu-aip的對象
       const client = new AipOcrClient(APP_ID, API_KEY, SECRET_KEY);
-      const image = fs.readFileSync("temp.png").toString("base64");
+      const image = fs.readFileSync(imgPath).toString('base64');
       client.generalBasic(image);
       console.log(result.words_result[0].words);
       //回傳驗証碼OCR結果
