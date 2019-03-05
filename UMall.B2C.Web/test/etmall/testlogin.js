@@ -1,7 +1,7 @@
 module.exports = {
   '@tags': ['login'],
   'Demo ETMall Login testcase': function(browser){
-      var loginpage=browser.page.loginpage();
+      var loginpage=browser.page_objects.loginpage;
 
       loginpage.navigate()
           .setValue('@inputLoginId','eitctest001@gmail.com')
