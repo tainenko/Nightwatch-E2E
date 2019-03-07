@@ -8,6 +8,8 @@ MAINTAINER tony.ko
 RUN apk --no-cache add \
     nodejs \
     npm \
+    openjdk8 \
+    curl \
   && npm install -g \
     npm@latest \
     nightwatch@'<1.1' \
@@ -20,4 +22,3 @@ RUN apk --no-cache add \
 ENV NODE_PATH=/usr/lib/node_modules
 
 WORKDIR /home/nightwatch
-
