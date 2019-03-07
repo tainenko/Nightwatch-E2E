@@ -1,59 +1,60 @@
 {
-  "src_folders" : ["./test/etmall"],
-  "custom_commands_path" : "./custom-commands",
-  "custom_assertions_path" : ".custom-assertions",
-  "page_objects_path" : "./pages_objects",
-  "globals_path" : "",
-
-  "webdriver" : {
-    "start_process": true
-  },
-
-  "test_settings" : {
-    "default" : {
-      "webdriver": {
-        "server_path": "./bin/geckodriver-0.23",
-        "port": 4444,
-        "cli_args": [
-          "--log", "debug"
-        ]
+  "src_folders": [
+    "test/etmall"
+  ],
+  "custom_commands_path": "custom-commands",
+  "custom_assertions_path": "custom-assertions",
+  "page_objects_path": "pages_objects",
+  "globals_path": "",
+  "test_settings": {
+    "default": {
+      "launch_url": "https://www.etmall.com.tw",
+      "selenium_host": "http://localhost:4444",
+      "desiredCapabilities": {
+        "browserName": "chrome"
       },
-      "filter": ["./tests/etmall"],
-      "desiredCapabilities" : {
-        "browserName" : "firefox",
-        "acceptInsecureCerts" : true
+      "screenshots": {
+        "enabled": true,
+        "on_failure": true,
+        "path": "tests_output/screenshots"
       }
     },
-
-    "chrome" : {
-      "webdriver": {
-        "port": 9515,
-        "server_path": "./bin/chromedriver-2.32",
-        "cli_args": [
-          "--verbose"
-        ]
-      },
-
-      "desiredCapabilities" : {
-        "browserName" : "chrome",
-        "loggingPrefs": {"driver": "INFO", "server": "OFF", "browser": "INFO"}
-      }
-    },
-
-    "selenium_server" : {
-      "selenium" : {
-        "start_process": true,
-        "host": "localhost",
-        "server_path": "./bin/selenium-server-standalone-3.10.0.jar",
-        "cli_args": {
-          "webdriver.gecko.driver": "./bin/geckodriver-0.23",
-          "webdriver.chrome.driver": "./bin/chromedriver-2.32"
+    "chrome": {
+      "desiredCapabilities": {
+        "browserName": "chrome",
+        "platform": "LINUX",
+        "chromeOptions": {
+          args: [
+            '--window-size=1920,1280',
+            '--ignore-certificate-errors',
+            '--disable-gpu'
+          ]
         }
-      },
-
-      "desiredCapabilities" : {
-        "browserName" : "firefox",
-        "acceptSslCerts": true
+      }
+    },
+    "firefox": {
+      "desiredCapabilities": {
+        "browserName": "firefox",
+        'moz:firefoxOptions': {
+          args: [
+            '--window-size=1920,1280'
+          ]
+        }
+      }
+    },
+    "mobile-chrome": {
+      "desiredCapabilities": {
+        "browserName": "chrome",
+        "chromeOptions": {
+          args: [
+            '--ignore-certificate-errors',
+            '--disable-gpu'
+          ]
+          mobileEmulation: {
+            "deviceName": 'Apple iPhone 5',
+            "user-agent": 'MQQBrowser/26 Mozilla/5.0 (Linux; U; Android 2.3.7; zh-cn; MB200 Build/GRJ22; CyanogenMod-7) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1'
+          }
+        }
       }
     }
   }
