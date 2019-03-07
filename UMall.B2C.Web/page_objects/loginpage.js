@@ -87,6 +87,7 @@ var loginCommands = {
        * ]
        * }
        */
+      const AipOcrClient = require("baidu-aip-sdk").ocr;
       const APP_ID = '15428109';
       const API_KEY = '11L9VfvOweGpVgs8omxorLTK';
       const SECRET_KEY = '6eNlH8yNuFGC4n7q2kNFgp04hqlrwgnr';
@@ -104,8 +105,8 @@ var loginCommands = {
 
 module.exports = {
     url: function(){
-        return this.api.launchurl+'/Login?url=%2F'
-    }
+        return this.api.launchurl+'/Login?url=%2F';
+    },
     commands: [loginCommands],
     elements: {
         inputLoginId: '#loginID',

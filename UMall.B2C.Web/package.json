@@ -1,14 +1,14 @@
 {
-  "name": "nightwatch101",
-  "version": "0.0.9",
-  "description": "nightwatch for end-to-end testing",
+  "name": "nightwatch-e2e",
+  "version": "0.0.1",
+  "description": "UI Automation Framework with nightwatch for e2e testing",
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/nightwatch --env local"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cythilya/nightwatch101.git"
+    "url": "git+https://github.com/tainenko/nightwatch101.git"
   },
   "keywords": [
     "nightwatch",
@@ -18,18 +18,18 @@
     "webdriver"
   ],
   "author": {
-    "name": "Hsin-Hao Tang",
-    "url": "https://github.com/cythilya"
+    "name": "Tai-Nien Ko,
+    "url": "https://github.com/tainenko"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/cythilya/nightwatch101/issues"
+    "url": "https://github.com/tainenko/nightwatch-e2e/issues"
   },
-  "homepage": "https://github.com/cythilya/nightwatch101#readme",
+  "homepage": "https://github.com/tainenko/nightwatch-e2e#readme",
   "devDependencies": {
-    "nightwatch": "1.0.18",
-    "nightwatch-html-reporter": "^2.0.4",
-    "chromedriver": "^2.33.2",
-    "selenium-server": "^3.8.1"
+    "nightwatch": "1.0.19",
+    "nightwatch-allure-adapter": "1.2.4",
+    "node-tesseract": "0.2.7",
+    "baidu-aip-sdk": "2.3.9"
   }
 }

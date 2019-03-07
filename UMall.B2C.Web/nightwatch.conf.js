@@ -21,6 +21,11 @@ const config = {
       "webdriver.chrome.driver": chromedriver.path
     }
   },
+  "screenshots": {
+    "enabled": true,
+    "on_failure": true,
+    "path": "tests_output/screenshots"
+  },
   // "live_output": true,
   "test_workers" : {
     "enabled": true,
@@ -28,7 +33,7 @@ const config = {
   },
   "test_settings": {
     "default": {
-      "launch_url": "http://localhost",
+      "launch_url": "https://www.etmall.com.tw",
       "selenium_port": 4444,
       "selenium_host": "127.0.0.1",
       "silent": true,
@@ -68,6 +73,6 @@ const config = {
       }
     }
   }
-}
+};
 
 module.exports = config;
