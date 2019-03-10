@@ -4,7 +4,7 @@
   "description": "UI Automation Framework with nightwatch for e2e testing",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/nightwatch --env local"
+    "test": "nightwatch --config ./nightwatch.json"
   },
   "repository": {
     "type": "git",
@@ -18,7 +18,7 @@
     "webdriver"
   ],
   "author": {
-    "name": "Tai-Nien Ko,
+    "name": "Tai-Nien Ko",
     "url": "https://github.com/tainenko"
   },
   "license": "MIT",
@@ -31,5 +31,10 @@
     "nightwatch-allure-adapter": "1.2.4",
     "node-tesseract": "0.2.7",
     "baidu-aip-sdk": "2.3.9"
+  },
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "png-crop": "0.0.2",
+    "selenium-server": "^3.141.59"
   }
 }

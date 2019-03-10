@@ -1,22 +1,25 @@
 {
   "src_folders": [
-    "test/etmall"
+    "./test/etmall"
   ],
-  "custom_commands_path": "custom-commands",
-  "custom_assertions_path": "custom-assertions",
-  "page_objects_path": "pages_objects",
+  "custom_commands_path": "./custom_commands",
+  "custom_assertions_path": "./custom_assertions",
+  "page_objects_path": "./page_objects",
   "globals_path": "",
+  "screenshots": {
+    "enabled": true,
+    "on_failure": true,
+    "path": "tests_output/screenshots"
+  },
   "test_settings": {
     "default": {
       "launch_url": "https://www.etmall.com.tw",
-      "selenium_host": "http://localhost:4444",
-      "desiredCapabilities": {
-        "browserName": "chrome"
-      },
-      "screenshots": {
-        "enabled": true,
-        "on_failure": true,
-        "path": "tests_output/screenshots"
+      "selenium_port": 4444,
+      "selenium_host": "127.0.0.1",
+      "silent": true,
+      "globals": {
+        "waitForConditionTimeout": 10000,
+        "rtContext": {}
       }
     },
     "chrome": {
@@ -24,10 +27,11 @@
         "browserName": "chrome",
         "platform": "LINUX",
         "chromeOptions": {
-          args: [
-            '--window-size=1920,1280',
-            '--ignore-certificate-errors',
-            '--disable-gpu'
+          "args": [
+            "--headless",
+            "--window-size=1920,1280",
+            "--ignore-certificate-errors",
+            "--disable-gpu"
           ]
         }
       }
@@ -35,9 +39,9 @@
     "firefox": {
       "desiredCapabilities": {
         "browserName": "firefox",
-        'moz:firefoxOptions': {
-          args: [
-            '--window-size=1920,1280'
+        "moz:firefoxOptions": {
+          "args": [
+            "--window-size=1920,1280"
           ]
         }
       }
@@ -46,13 +50,13 @@
       "desiredCapabilities": {
         "browserName": "chrome",
         "chromeOptions": {
-          args: [
-            '--ignore-certificate-errors',
-            '--disable-gpu'
-          ]
-          mobileEmulation: {
-            "deviceName": 'Apple iPhone 5',
-            "user-agent": 'MQQBrowser/26 Mozilla/5.0 (Linux; U; Android 2.3.7; zh-cn; MB200 Build/GRJ22; CyanogenMod-7) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1'
+          "args": [
+            "--ignore-certificate-errors",
+            "--disable-gpu"
+          ],
+          "mobileEmulation": {
+            "deviceName": "Apple iPhone 5",
+            "user-agent": "MQQBrowser/26 Mozilla/5.0 (Linux; U; Android 2.3.7; zh-cn; MB200 Build/GRJ22; CyanogenMod-7) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1"
           }
         }
       }

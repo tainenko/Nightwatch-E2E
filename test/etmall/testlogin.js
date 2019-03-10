@@ -6,6 +6,7 @@ module.exports = {
       loginpage.navigate()
           .setValue('@inputLoginId','eitctest001@gmail.com')
           .setValue('@inputPassward','abc12345')
+          .saveValidcodeImg('temp.png')
           .getOCRwithtess('temp.png')
           .click('@loginButton')
           .end()
