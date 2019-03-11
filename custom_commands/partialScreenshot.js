@@ -43,14 +43,6 @@ partialScreenshot.prototype.command = function (selector, filename, callback) {
                   self.client.assertion(false, 'not found', 'found', `SaveElementScreenshotAction: could not crop: ${pathToSave} ${err}`, self.abortOnFailure, self._stackTrace);
                   return self.emit('complete');
                 }
-                fs.unlink(pathTmp, (res) => {
-                  const message = `Saved screenshot for <${selector}> to ${pathToSave}`;
-                  self.client.assertion(true, 'expression false', 'expression true', message, true);
-                  self.emit('complete');
-                  if (typeof callback === 'function') {
-                    callback.call(self.client.api);
-                  }
-                });
               });
           });
         });
