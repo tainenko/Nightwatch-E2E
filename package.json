@@ -4,7 +4,7 @@
   "description": "UI Automation Framework with nightwatch for e2e testing",
   "main": "index.js",
   "scripts": {
-    "test": "nightwatch --config ./nightwatch.json"
+    "test": "nightwatch"
   },
   "repository": {
     "type": "git",
@@ -33,8 +33,6 @@
     "baidu-aip-sdk": "2.3.9"
   },
   "dependencies": {
-    "babel-core": "^6.26.3",
-    "png-crop": "0.0.2",
-    "selenium-server": "^3.141.59"
+    "png-crop": "0.0.2"
   }
 }

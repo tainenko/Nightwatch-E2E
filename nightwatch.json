@@ -11,27 +11,43 @@
     "on_failure": true,
     "path": "tests_output/screenshots"
   },
+  "selenium": {
+        "start_process": false,
+        "host": "hub",
+        "port": 4444
+    },
   "test_settings": {
     "default": {
       "launch_url": "https://www.etmall.com.tw",
-      "selenium_port": 4444,
-      "selenium_host": "127.0.0.1",
       "silent": true,
       "globals": {
         "waitForConditionTimeout": 10000,
         "rtContext": {}
+      },
+      "desiredCapabilities": {
+        "browserName": "chrome",
+        "javascriptEnabled": true,
+        "acceptSslCerts": true,
+        "chromeOptions": {
+          "args": [
+            "--window-size=1920,1280",
+            "--ignore-certificate-errors",
+            "--disable-gpu",
+            "--no-sandbox"
+          ]
+        }
       }
     },
     "chrome": {
       "desiredCapabilities": {
         "browserName": "chrome",
-        "platform": "LINUX",
+        "platform": "ANY",
         "chromeOptions": {
           "args": [
-            "--headless",
             "--window-size=1920,1280",
             "--ignore-certificate-errors",
-            "--disable-gpu"
+            "--disable-gpu",
+            "--no-sandbox"
           ]
         }
       }
