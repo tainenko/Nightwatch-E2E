@@ -107,7 +107,7 @@ var loginCommands = {
 
 module.exports = {
     url: function(){
-        return this.api.launchurl+'/Login?url=%2F';
+        return this.api.launchUrl+'/Login?url=%2F';
     },
     commands: [loginCommands],
     elements: {
