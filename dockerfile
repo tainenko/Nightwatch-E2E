@@ -5,8 +5,9 @@ MAINTAINER tony.ko
 RUN apk --no-cache add \
     nodejs \
     npm \
-    openjdk8 \
-    curl \
+#Don't need this part , unless the container would be a slave of jenkins.    
+#    openjdk8 \
+#    curl \
   && npm install -g \
     npm@latest \
     nightwatch@'<1.1' \
