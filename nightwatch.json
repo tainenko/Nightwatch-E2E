@@ -5,7 +5,7 @@
   "custom_commands_path": "./custom_commands",
   "custom_assertions_path": "./custom_assertions",
   "page_objects_path": "./page_objects",
-  "globals_path": "",
+  "globals_path": "./global.js",
   "screenshots": {
     "enabled": true,
     "on_failure": true,
@@ -30,7 +30,6 @@
         "acceptSslCerts": true,
         "chromeOptions": {
           "args": [
-            "--window-size=1920,1280",
             "--ignore-certificate-errors",
             "--disable-gpu",
             "--no-sandbox"
@@ -44,7 +43,6 @@
         "platform": "ANY",
         "chromeOptions": {
           "args": [
-            "--window-size=1920,1280",
             "--ignore-certificate-errors",
             "--disable-gpu",
             "--no-sandbox"
@@ -57,7 +55,6 @@
         "browserName": "firefox",
         "moz:firefoxOptions": {
           "args": [
-            "--window-size=1920,1280"
           ]
         }
       }
