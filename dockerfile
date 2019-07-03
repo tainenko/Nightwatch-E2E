@@ -5,6 +5,7 @@ MAINTAINER tony.ko
 RUN apk --no-cache add \
     nodejs \
     npm \
+    tesseract-ocr \
 #Don't need this part , unless the container would be a slave of jenkins.    
 #    openjdk8 \
 #    curl \
@@ -19,3 +20,4 @@ RUN apk --no-cache add \
 # Set NODE_PATH to be able to require globally installed packages:
 ENV NODE_PATH=/usr/lib/node_modules
 WORKDIR /home/nightwatch
+w
